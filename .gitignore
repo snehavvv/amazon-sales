@@ -1,0 +1,5 @@
+*.db
+powerbi/*.csv
+__pycache__/
+.env
+*.pyc

@@ -1,0 +1,44 @@
+-- Core KPIs
+Total Revenue = 
+    CALCULATE(SUM(fact_sales[sale_amount]), fact_sales[order_status] = "Delivered")
+
+Total Profit = 
+    CALCULATE(SUM(fact_sales[profit]), fact_sales[order_status] = "Delivered")
+
+Total Orders = 
+    CALCULATE(COUNTROWS(fact_sales), fact_sales[order_status] = "Delivered")
+
+Profit Margin % = 
+    DIVIDE([Total Profit], [Total Revenue], 0) * 100
+
+Avg Order Value = 
+    DIVIDE([Total Revenue], [Total Orders], 0)
+
+Return Rate % = 
+    DIVIDE(
+        CALCULATE(COUNTROWS(fact_sales), fact_sales[order_status] = "Returned"),
+        COUNTROWS(fact_sales), 0
+    ) * 100
+
+-- Time intelligence (these are the ones that impress)
+Revenue LY = 
+    CALCULATE([Total Revenue], SAMEPERIODLASTYEAR(dim_date[full_date]))
+
+YoY Growth % = 
+    DIVIDE([Total Revenue] - [Revenue LY], [Revenue LY], 0) * 100
+
+Revenue MTD = 
+    CALCULATE([Total Revenue], DATESMTD(dim_date[full_date]))
+
+Revenue QTD = 
+    CALCULATE([Total Revenue], DATESQTD(dim_date[full_date]))
+
+Revenue Rolling 3M = 
+    CALCULATE(
+        [Total Revenue],
+        DATESINPERIOD(dim_date[full_date], LASTDATE(dim_date[full_date]), -3, MONTH)
+    )
+
+-- Ranking measure (for dynamic top-N analysis)
+Product Rank = 
+    RANKX(ALL(dim_product[product_name]), [Total Revenue], , DESC, DENSE)
