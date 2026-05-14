@@ -42,6 +42,22 @@ amazon-sales-analytics/
 │   ├── 01_data_cleaning.ipynb
 │   └── 03_eda_analysis.ipynb
 │
+├── powerbi/
+│   ├── dax_measures.txt
+│   ├── dim_category.csv
+│   ├── dim_customer.csv
+│   ├── dim_date.csv
+│   ├── dim_geography.csv
+│   ├── dim_product.csv
+│   ├── dim_seller.csv
+│   └── fact_sales.csv
+│
+├── screenshots/
+│   ├── page1_executive.png
+│   ├── page2_products.png
+│   ├── page3_geo.png
+│   └── page4_cover.png
+│
 ├── sql_queries/
 │   ├── 01_create_schema.sql
 │   ├── 02_create_indexes.sql
@@ -49,21 +65,6 @@ amazon-sales-analytics/
 │   ├── 04_top_products_margin.sql
 │   ├── 05_vendor_reconciliation.sql
 │   └── 06_regional_performance.sql
-│
-├── powerbi/
-│   ├── amazon_dashboard.pbix
-│   ├── dax_measures.txt
-│   └── dashboard_preview.pdf
-│
-├── excel/
-│   └── amazon_sales_report.xlsx
-│
-│
-├── screenshots/
-│   ├── page1_executive.png
-│   ├── page2_products.png
-│   ├── page3_geo.png
-│   └── page4_cover.png
 │
 └── README.md
 ```
